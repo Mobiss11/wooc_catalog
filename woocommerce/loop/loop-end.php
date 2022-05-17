@@ -22,3 +22,48 @@ if ( ! defined( 'ABSPATH' ) ) {
     </ul>
   </div>
 </div>
+    
+<script>
+    
+    console.log('scripts start');
+    var btns = document.querySelectorAll('.qnty-buttons .btn-qnty');
+    if(btns){
+        btns.forEach(function(key, value){
+            key.onclick = function(){
+                var inp = key.parentNode.querySelector('.priduct-qnty');
+                if(inp){
+                   var v = Number(inp.value);
+                }
+                if(key.classList.contains('plus-btn')){
+                   v = v + 1;
+                }
+                if(key.classList.contains('minus-btn')){
+                    if(v>>0){
+                        v = v - 1;
+                    }
+                }
+                inp.value = v;
+            }
+        })
+    }
+
+    var li = document.querySelectorAll('.categories-block>a');
+   
+    if(li){
+        li.forEach(function(key, value){
+            key.onclick = function(){
+                 var opens =  document.querySelectorAll('.categories-block>a .dropdown.open');
+                if(key.querySelector('.dropdown').classList.contains('open')){
+                    key.querySelector('.dropdown').classList.remove('open');
+                    key.querySelector('svg').removeAttribute('style');
+                }else{
+                    opens.forEach(function(key, value){
+                        key.classList.remove('open');
+                    })
+                    key.querySelector('.dropdown').classList.add('open');
+                    key.querySelector('svg').setAttribute('style', 'transform: rotate(180deg)');
+                }
+            }
+        })
+    }
+</script>

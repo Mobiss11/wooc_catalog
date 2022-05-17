@@ -24,9 +24,19 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
+<?php    
+$cats = $product->get_category_ids();
+$c = count($cats);    
+
+for ($i=0; $i<$c; $i++){ 
+  $cat = get_the_category_by_ID($cats[$i]);
     
     
-<li class="product">
+  if($cat == 'Connector'){
+    
+ ?>     
+
+   <li class="product">
     <div class="top-row row">
          <div class="img">
              <?php 
@@ -40,21 +50,11 @@ if ( empty( $product ) || ! $product->is_visible() ) {
                echo '</h3>';
                $cats = $product->get_category_ids();
                $c = count($cats);
-               echo '<p class="prduct-categories">';
-               if($c>1){
-                   for ($i=0; $i<2; $i++){
-                       echo '<span>';
-                       echo get_the_category_by_ID($cats[$i]);
-                       echo '</span>';
-                   }
-               }else{
-                   for ($i=0; $i<1; $i++){
-                       echo '<span>';
-                       echo get_the_category_by_ID($cats[$i]);
-                       echo '</span>';
-                   }
-
-               }
+               
+      		   echo '<p class="prduct-categories">';
+               echo '<span>';
+               echo $cat;
+               echo '</span>';
                echo '</p>';
              ?>
          	</div>   
@@ -75,4 +75,11 @@ if ( empty( $product ) || ! $product->is_visible() ) {
           ?>
          </div>         
     </div>
-</li>
+</li>  
+     
+     
+ <?php    
+      
+  }  
+}
+?>
