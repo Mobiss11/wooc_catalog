@@ -36,7 +36,12 @@ for ($i=0; $i<$c; $i++){
     
  ?>     
 
-   <li class="product">
+   <li class="product" data-category="<?php 
+   $cats = $product->get_category_ids();
+   for ($i=0; $i<$c; $i++){ 
+     echo $cat = get_the_category_by_ID($cats[$i]) . ' ';
+    }
+   ?>">
     <div class="top-row row">
          <div class="img">
              <?php 
@@ -80,6 +85,59 @@ for ($i=0; $i<$c; $i++){
      
  <?php    
       
+  }else{
+ ?>
+     
+   <li class="product" data-category="<?php 
+   $cats = $product->get_category_ids();
+   for ($i=0; $i<$c; $i++){ 
+     echo $cat = get_the_category_by_ID($cats[$i]). ' ';
+    }
+   ?>" style="display: none;">
+    <div class="top-row row">
+         <div class="img">
+             <?php 
+               echo $product->get_image();
+             ?>
+         </div>
+         <div class="title">
+             <?php 
+               echo '<h3>';
+               echo $product->get_title();
+               echo '</h3>';
+               $cats = $product->get_category_ids();
+               $c = count($cats);
+               
+      		   echo '<p class="prduct-categories">';
+               echo '<span>';
+               echo $cat;
+               echo '</span>';
+               echo '</p>';
+             ?>
+         	</div>   
+            <div class="qnty-buttons">
+                 <button type="button" class="minus-btn btn-qnty">-</button>
+                  <input type="text" value="0" class="priduct-qnty">   
+                  <button type="button" class="plus-btn btn-qnty">+</button>
+
+             </div> 
+    
+            
+             
+    </div>
+    <div class="bottom-row row">
+        <div class="description">         
+          <?php
+              echo $product->get_description();    
+          ?>
+         </div>         
+    </div>
+</li>   
+      
+     
+     
+ <?php     
+  
   }  
 }
 ?>

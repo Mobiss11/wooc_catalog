@@ -66,4 +66,96 @@ if ( ! defined( 'ABSPATH' ) ) {
             }
         })
     }
+
+    var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
+    if(product){
+        product.forEach(function(key, value){
+            key.setAttribute('style', 'display: none');
+            var d = key.getAttribute('data-category');
+            if(d.search('Connector') !== -1){
+                key.removeAttribute('style');
+            }
+            
+        })
+    }
+    var no_child = document.querySelectorAll('.no-child');
+    if(no_child){
+        no_child.forEach(function(key, value){
+            key.onclick = function(){
+                var txt = key.innerText + ' ';
+                var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
+                if(product){
+                    product.forEach(function(key, value){
+                        key.setAttribute('style', 'display: none');
+                        var d = key.getAttribute('data-category');
+                        if(d.search(txt) !== -1){
+                            key.removeAttribute('style');
+                        }
+
+                    })
+                }
+                
+            }
+        })
+    }
+
+     var dropdown = document.querySelectorAll('.has-child .dropdown li');
+	 if(dropdown){
+        dropdown.forEach(function(key, value){
+            key.onclick = function(){
+                var txt = key.innerText + ' ';
+                var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
+                if(product){
+                    product.forEach(function(key, value){
+                        key.setAttribute('style', 'display: none');
+                        var d = key.getAttribute('data-category');
+                        if(d.search(txt) !== -1){
+                            key.removeAttribute('style');
+                        }
+
+                    })
+                }
+                
+            }
+        })
+    }
+ 
+    var srch = document.querySelector('.search-block input.search-input');
+    if(srch){
+        srch.oninput = function(){
+            console.log(srch.value)
+            var v = srch.value;
+            var l = v.length;
+            if(l > 3){
+                var txt = v;
+                var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
+                if(product){
+                    product.forEach(function(key, value){
+                        key.setAttribute('style', 'display: none');
+                        var d = key.getAttribute('data-category');
+                        if(d.search(txt) !== -1){
+                            key.removeAttribute('style');
+                        }
+
+                    })
+                }
+                
+            }else{
+                var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
+                if(product){
+                    product.forEach(function(key, value){
+                        key.setAttribute('style', 'display: none');
+                        var d = key.getAttribute('data-category');
+                        if(d.search('Connector') !== -1){
+                            key.removeAttribute('style');
+                        }
+
+                    })
+                }
+                
+                
+            }
+        }
+    }
+
 </script>

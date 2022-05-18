@@ -70,7 +70,7 @@ global $product;
                     $sub_cats = get_categories( $args2 );
                     
                     if($sub_cats) {
-                        echo '<a>'. $cat->name .'';
+                        echo '<a class="has-child">'. $cat->name .'';
                         echo '<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M1 1L5 5L9 1" stroke="#101828" stroke-width="1.44" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>';
@@ -82,7 +82,7 @@ global $product;
                         }   
                         echo '</ul></a>';
                     }else{
-                      echo '<a>'. $cat->name .'</a>';
+                      echo '<a class="no-child">'. $cat->name .'</a>';
                     }
                     
                 }       
