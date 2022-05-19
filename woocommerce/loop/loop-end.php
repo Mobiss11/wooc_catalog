@@ -113,7 +113,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                 
                 
                     var active = document.querySelector('.categories-block .active');
-                    active.classList.remove('active');
+                    if(active){
+                       active.classList.remove('active');
+                    }
                     key.classList.add('active');
                     var txt = key.innerText + ' ';
                     var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
@@ -183,7 +185,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                 
                 
                     var active = document.querySelector('.categories-block .active');
-                    active.classList.remove('active');
+                    if(active){
+                        active.classList.remove('active');
+                    }
                     key.classList.add('active');
                     var txt = key.innerText + ' ';
                     var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
@@ -207,7 +211,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     var srch = document.querySelector('.search-block input.search-input');
     if(srch){
         srch.oninput = function(){
-            console.log(srch.value)
+            
             var v = srch.value;
             var l = v.length;
             if(l > 2){
