@@ -134,34 +134,34 @@ p.prduct-categories span{
     display: flex;
     flex-direction: column;
 }
-.right-block ul.products.columns-4 li.product:first-child{
-    background: linear-gradient(105.3deg, #00A2E3 0%, #4DCDFF 97.63%);
+.right-block ul.products.columns-4 li.product:nth-child(10n+1){
+    background: linear-gradient(105.3deg, #00A2E3 0%, #4DCDFF 97.63%) !important;
 }
-.right-block ul.products.columns-4 li.product:nth-child(2){
+.right-block ul.products.columns-4 li.product:nth-child(10n + 2){
    background: linear-gradient(105.3deg, #009BF9 0%, #34AFFF 97.63%);
 }
-.right-block ul.products.columns-4 li.product:nth-child(3){
+.right-block ul.products.columns-4 li.product:nth-child(10n + 3){
     background: linear-gradient(105.3deg, #FF443A 0%, #FF7B47 30.54%, #FFF365 97.63%);
 }
-.right-block ul.products.columns-4 li.product:nth-child(4){
+.right-block ul.products.columns-4 li.product:nth-child(10n + 4){
     background: linear-gradient(105.3deg, #000000 0%, rgba(0, 0, 0, 0.69) 97.63%);
 }
-.right-block ul.products.columns-4 li.product:nth-child(5){
+.right-block ul.products.columns-4 li.product:nth-child(10n + 5){
    background: linear-gradient(105.3deg, #0085FF 0%, #0051D1 97.63%);
 }
-.right-block ul.products.columns-4 li.product:nth-child(6){
+.right-block ul.products.columns-4 li.product:nth-child(10n + 6){
     background: linear-gradient(105.3deg, #00A762 0%, #01C775 97.63%);
 }
-.right-block ul.products.columns-4 li.product:nth-child(7){
+.right-block ul.products.columns-4 li.product:nth-child(10n + 7){
     background: linear-gradient(105.3deg, #00C6F3 0%, #00B87C 97.63%);
 }
-.right-block ul.products.columns-4 li.product:nth-child(8){
+.right-block ul.products.columns-4 li.product:nth-child(10n + 8){
     background: linear-gradient(105.3deg, #0086D9 0%, #029FFF 97.63%);
 }
-.right-block ul.products.columns-4 li.product:nth-child(9){
+.right-block ul.products.columns-4 li.product:nth-child(10n + 9){
     background: linear-gradient(105.3deg, #E63764 0%, #CA1745 97.63%);
 }
-.right-block ul.products.columns-4 li.product:nth-child(10){
+.right-block ul.products.columns-4 li.product:nth-child(10n+ 10){
     background: linear-gradient(105.3deg, #00323A 0%, #005360 97.63%);
 }
 
@@ -236,8 +236,14 @@ nav.woocommerce-pagination {
     margin-top: 14px;
     margin-bottom: 0 !important;
 }
-.categories-block .dropdown.open{
+.categories-block .dropdown.open {
     display: block;
+    margin-left: -15px;
+}
+.categories-block .active {
+    color: black !important;
+    border-left: 2px solid black;
+    font-weight: bold;
 }
 @media all and (min-width: 992px){
     .category-row>div.left-block {

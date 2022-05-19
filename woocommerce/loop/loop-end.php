@@ -47,21 +47,23 @@ if ( ! defined( 'ABSPATH' ) ) {
         })
     }
 
-    var li = document.querySelectorAll('.categories-block>a');
+    var li = document.querySelectorAll('.categories-block>a>span');
    
     if(li){
         li.forEach(function(key, value){
             key.onclick = function(){
                  var opens =  document.querySelectorAll('.categories-block>a .dropdown.open');
-                if(key.querySelector('.dropdown').classList.contains('open')){
-                    key.querySelector('.dropdown').classList.remove('open');
-                    key.querySelector('svg').removeAttribute('style');
-                }else{
+                if(!key.parentNode.querySelector('.dropdown').classList.contains('open')){
                     opens.forEach(function(key, value){
                         key.classList.remove('open');
                     })
-                    key.querySelector('.dropdown').classList.add('open');
-                    key.querySelector('svg').setAttribute('style', 'transform: rotate(180deg)');
+                    key.parentNode.querySelector('.dropdown').classList.add('open');
+                    key.parentNode.querySelector('svg').setAttribute('style', 'transform: rotate(180deg)');
+                       
+                }else{
+                    
+                    key.parentNode.querySelector('.dropdown').classList.remove('open');
+                    key.parentNode.querySelector('svg').removeAttribute('style');
                 }
             }
         })
@@ -82,19 +84,69 @@ if ( ! defined( 'ABSPATH' ) ) {
     if(no_child){
         no_child.forEach(function(key, value){
             key.onclick = function(){
-                var txt = key.innerText + ' ';
-                var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
-                if(product){
-                    product.forEach(function(key, value){
-                        key.setAttribute('style', 'display: none');
-                        var d = key.getAttribute('data-category');
-                        if(d.search(txt) !== -1){
-                            key.removeAttribute('style');
-                        }
+                if(key.classList.contains('active')){
+                    key.classList.remove('active');
+                    var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
+                    if(product){
+                        product.forEach(function(key, value){
+                            key.setAttribute('style', 'display: none');
+                            var d = key.getAttribute('data-category');
+                            if(d.search('Connector') !== -1){
+                                key.removeAttribute('style');
+                                var a = document.querySelectorAll('.categories-block a');
+                                a.forEach(function(key, value){
+                                    var t = key.innerText;
+                                    
+                                    if(t.search('Connector') !== -1){
+                                        if(!key.classList.contains('active')){
+                                            key.classList.add('active');
+                                        }
+                                    }
+                                })
+                                
+                            }
 
-                    })
+                        })
+                    }
+                    
+                }else{
+                
+                
+                    var active = document.querySelector('.categories-block .active');
+                    active.classList.remove('active');
+                    key.classList.add('active');
+                    var txt = key.innerText + ' ';
+                    var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
+                    if(product){
+                        product.forEach(function(key, value){
+                            key.setAttribute('style', 'display: none');
+                            var d = key.getAttribute('data-category');
+                            if(d.search(txt) !== -1){
+                                key.removeAttribute('style');
+                            }
+
+                        })
+                    }
                 }
                 
+            }
+        })
+    }
+
+    var svg = document.querySelectorAll('.has-child path');
+    if(svg){
+        svg.forEach(function(key, value){
+            key.onclick = function(){
+                
+                if(!key.parentNode.parentNode.querySelector('.dropdown').classList.contains('open')){
+                    var opens =  document.querySelectorAll('.categories-block>a .dropdown.open');
+                      opens.forEach(function(key, value){
+                        key.classList.remove('open');
+                    })
+                    key.parentNode.parentNode.querySelector('.dropdown').classList.add('open');
+                }else{
+                    key.parentNode.parentNode.querySelector('.dropdown').classList.remove('open');
+                }
             }
         })
     }
@@ -103,17 +155,49 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 if(dropdown){
         dropdown.forEach(function(key, value){
             key.onclick = function(){
-                var txt = key.innerText + ' ';
-                var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
-                if(product){
-                    product.forEach(function(key, value){
-                        key.setAttribute('style', 'display: none');
-                        var d = key.getAttribute('data-category');
-                        if(d.search(txt) !== -1){
-                            key.removeAttribute('style');
-                        }
+                if(key.classList.contains('active')){
+                    key.classList.remove('active');
+                    var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
+                    if(product){
+                        product.forEach(function(key, value){
+                            key.setAttribute('style', 'display: none');
+                            var d = key.getAttribute('data-category');
+                            if(d.search('Connector') !== -1){
+                                key.removeAttribute('style');
+                                var a = document.querySelectorAll('.categories-block a');
+                                a.forEach(function(key, value){
+                                    var t = key.innerText;
+                                     if(t.search('Connector') !== -1){
+                                        if(!key.classList.contains('active')){
+                                            key.classList.add('active');
+                                        }
+                                    }
+                                })
+                                
+                            }
 
-                    })
+                        })
+                    }
+                    
+                }else{
+                
+                
+                    var active = document.querySelector('.categories-block .active');
+                    active.classList.remove('active');
+                    key.classList.add('active');
+                    var txt = key.innerText + ' ';
+                    var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
+                    if(product){
+                        product.forEach(function(key, value){
+                            key.setAttribute('style', 'display: none');
+                            var d = key.getAttribute('data-category');
+                            if(d.search(txt) !== -1){
+                                key.removeAttribute('style');
+                            }
+
+                        })
+                    }
+                    
                 }
                 
             }
@@ -126,13 +210,14 @@ if ( ! defined( 'ABSPATH' ) ) {
             console.log(srch.value)
             var v = srch.value;
             var l = v.length;
-            if(l > 3){
+            if(l > 2){
                 var txt = v;
                 var product = document.querySelectorAll('.right-block ul.products.columns-4 .product');
                 if(product){
                     product.forEach(function(key, value){
                         key.setAttribute('style', 'display: none');
-                        var d = key.getAttribute('data-category');
+                        var d = key.querySelector('.title h3').innerText;
+                        console.log(d);
                         if(d.search(txt) !== -1){
                             key.removeAttribute('style');
                         }

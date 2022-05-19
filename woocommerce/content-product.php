@@ -30,7 +30,8 @@ $c = count($cats);
 
 for ($i=0; $i<$c; $i++){ 
   $cat = get_the_category_by_ID($cats[$i]);
-    
+  
+  
     
   if($cat == 'Connector'){
     
